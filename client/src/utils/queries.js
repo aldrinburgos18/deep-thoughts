@@ -48,7 +48,7 @@ export const QUERY_USER = gql`
         username
       }
       thoughts {
-        __dirname
+        _id
         thoughtText
         createdAt
         reactionCount

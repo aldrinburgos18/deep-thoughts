@@ -6,6 +6,7 @@ import ThoughtList from "../components/ThoughtList";
 
 import { useQuery } from "@apollo/react-hooks";
 import { QUERY_USER } from "../utils/queries";
+import FriendList from "../components/FriendList";
 
 const Profile = () => {
   const { username: userParam } = useParams();
@@ -19,7 +20,6 @@ const Profile = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-
   return (
     <div>
       <div className="flex-row mb-3">
@@ -35,7 +35,13 @@ const Profile = () => {
             title={`${user.username}'s thoughts...`}
           />
 
-          <div className="col-12 col-lg-3 mb-3">{/* PRINT FRIEND LIST */}</div>
+          <div className="col-12 col-lg-3 mb-3">
+            <FriendList
+              username={user.username}
+              friendCount={user.friendCount}
+              friends={user.friends}
+            />
+          </div>
         </div>
       </div>
     </div>
